@@ -27,16 +27,20 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'chatterbot.ext.django_chatterbot',
-    'DjangoApp',
+    'DjangoChatBotApp',
 )
 
 # ChatterBot settings
 
 CHATTERBOT = {
     'name': 'Chá de Bode',
-    'django_app_name': 'django_chatterbot',
+    'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
+    'storage_adapter': 'chatterbot.storage.DjangoStorageAdapter',
     'training_data': [
-        'chatterbot.corpus.portuguese']
+        'chatterbot.corpus.portuguese.about_ia',
+        'chatterbot.corpus.portuguese.greetings',
+        'chatterbot.corpus.portuguese.conversations',
+        'chatterbot.corpus.portuguese.games']
 }
 
 MIDDLEWARE = (
@@ -49,7 +53,7 @@ MIDDLEWARE = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'DjangoApp.urls'
+ROOT_URLCONF = 'DjangoChatBotApp.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'DjangoApp.wsgi.application'
+WSGI_APPLICATION = 'DjangoChatBotApp.wsgi.application'
 
 
 # Database

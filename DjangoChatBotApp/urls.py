@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.contrib import admin
-from DjangoApp.views import ChatterBotAppView, ChatterBotApiView
+from DjangoChatBotApp.views import ChatterBotAppView, ChatterBotApiView
 
 
 urlpatterns = [
