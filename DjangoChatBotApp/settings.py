@@ -13,7 +13,7 @@ SECRET_KEY = '42earesposta'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django-chat-bot-app.herokuapp.com']
 
 
 # Application definition
@@ -27,19 +27,24 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'chatterbot.ext.django_chatterbot',
-    'DjangoApp',
+    'DjangoChatBotApp',
 )
 
 # ChatterBot settings
 
 CHATTERBOT = {
     'name': 'Chá de Bode',
-    'django_app_name': 'django_chatterbot',
+    'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
+    'storage_adapter': 'chatterbot.storage.DjangoStorageAdapter',
     'training_data': [
-        'chatterbot.corpus.portuguese']
+        'chatterbot.corpus.portuguese.about_ia',
+        'chatterbot.corpus.portuguese.greetings',
+        'chatterbot.corpus.portuguese.conversations',
+        'chatterbot.corpus.portuguese.games']
 }
 
 MIDDLEWARE = (
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -49,7 +54,7 @@ MIDDLEWARE = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'DjangoApp.urls'
+ROOT_URLCONF = 'DjangoChatBotApp.urls'
 
 TEMPLATES = [
     {
@@ -67,18 +72,15 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'DjangoApp.wsgi.application'
+WSGI_APPLICATION = 'DjangoChatBotApp.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+import dj_database_url
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
 
 
 # Internationalization
@@ -96,13 +98,19 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
-
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
+PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
+STATIC_ROOT  =   os.path.join(PROJECT_ROOT,
+                              'staticfiles')
 STATIC_URL = '/static/'
 
+# Extra lookup directories for collectstatic to find static files
 STATICFILES_DIRS = (
-    os.path.join(
-        os.path.dirname(__file__),
-        'static',
-    ),
+    os.path.join(PROJECT_ROOT,
+                 'static'),
 )
+
+#  Add configuration for static files storage using whitenoise
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+

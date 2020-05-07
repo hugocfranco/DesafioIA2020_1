@@ -3,7 +3,6 @@ from django.views.generic.base import TemplateView
 from django.views.generic import View
 from django.http import JsonResponse
 from chatterbot import ChatBot
-from chatterbot.trainers import ChatterBotCorpusTrainer
 from chatterbot.ext.django_chatterbot import settings
 
 
@@ -17,8 +16,6 @@ class ChatterBotApiView(View):
     """
 
     chadebode = ChatBot(**settings.CHATTERBOT)
-    trainer = ChatterBotCorpusTrainer(chadebode)
-    trainer.train('chatterbot.corpus.portuguese')
 
     def post(self, request, *args, **kwargs):
         """
