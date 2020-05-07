@@ -1,0 +1,6 @@
+[submodule "ChatterBot"]
+	path = ChatterBot
+	url = git@github.com:hugocfranco/ChatterBot.git
+[submodule "chatterbot-corpus"]
+	path = chatterbot-corpus
+	url = git@github.com:hugocfranco/chatterbot-corpus.git

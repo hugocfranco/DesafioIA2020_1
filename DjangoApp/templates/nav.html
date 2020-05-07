@@ -1,0 +1,23 @@
+{% load static %}
+<nav class="navbar navbar-dark bg-inverse navbar-full">
+
+  <a class="navbar-brand" href="{% url 'main' %}">
+    <img src="{% static 'img/undb.png' %}" width="60" height="45" class="d-inline-block align-top" alt="UNDB">
+    Centro Universitário Dom Bosco
+  </a>
+
+  <ul class="nav navbar-nav float-xs-right">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.undb.edu.br">Site</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/gunthercox/ChatterBot">GitHub</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'chatterbot' %}">API</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+    </li>
+  </ul>
+</nav>
