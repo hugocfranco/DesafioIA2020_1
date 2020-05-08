@@ -11,7 +11,7 @@ certifi==2020.4.5.1
 cffi==1.14.0
 chardet==3.0.4
 ChatterBot==1.1.0a7
-chatterbot-corpus==1.2.0
+-e git:://github.com/hugocfranco/chatterbot-corpus.git#egg=chatterbot-corpus
 click==7.1.2
 colorama==0.4.3
 cryptography==2.9.2
@@ -25,8 +25,7 @@ docker-compose==1.25.5
 dockerpty==0.4.1
 docopt==0.6.2
 docutils==0.15.2
-en-core-web-sm<=2.1.0,>=1.9.9
-filelock==3.0.12
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.0.0/en_core_web_sm-2.0.0.tar.gz#en_core_web_smfilelock==3.0.12
 future==0.16.0
 gunicorn==20.0.4
 idna==2.9
