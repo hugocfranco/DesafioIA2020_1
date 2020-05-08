@@ -1,6 +1,8 @@
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import django_heroku
+import psycopg2
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -77,20 +79,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'DjangoChatBotApp.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', 'd9ug13q5kkd4sm'),
-        'USER': os.environ.get('DB_USER', 'anhdlhwdfeqkez'),
-        'PASSWORD': os.environ.get('DB_PASS', '41a0277a55adb3af57da6109e7335189aa5dee7a474e61139ecb529f93c95e6f'),
-        'HOST': 'ec2-52-201-55-4.compute-1.amazonaws.com',
-        'PORT': '5432'
-    }
-}
+DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=True)}
+
+DATABASE_URL = os.environ['DATABASE_URL']
+
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -116,7 +112,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
     os.path.join(
         BASE_DIR,
-        'DjangoChatBotApp/static'
+        'DjangoChatBotApp/static',
     ),
 )
 
