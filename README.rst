@@ -14,10 +14,12 @@ Instalação
     * Abra o terminal e execute os seguites comandos:
         * pip install ChatterBot/
         * pip install chatterbot-corpus/
-        * pip install django chatterbot
+        * pip install django
+        * python -m spacy download en
         * python manage.py migrate
         * python manage.py train
-        * python manage.py runserver 0.0.0.0:8000
+        * python manage.py runserver
+
 
 
 
