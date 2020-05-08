@@ -1,1 +1,1 @@
-web: gunicorn DjangoChatBotApp.wsgi --log-file -
+web: python -m spacy download en && gunicorn DjangoChatBotApp.wsgi --log-file -
