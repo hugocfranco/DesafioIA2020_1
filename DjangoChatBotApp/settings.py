@@ -40,10 +40,7 @@ CHATTERBOT = {
     'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
     'storage_adapter': 'chatterbot.storage.DjangoStorageAdapter',
     'training_data': [
-        'chatterbot.corpus.portuguese.about_ia',
-        'chatterbot.corpus.portuguese.greetings',
-        'chatterbot.corpus.portuguese.conversations',
-        'chatterbot.corpus.portuguese.games']
+        'chatterbot.corpus.portuguese']
 }
 
 MIDDLEWARE = (
