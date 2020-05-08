@@ -11,7 +11,7 @@ certifi==2020.4.5.1
 cffi==1.14.0
 chardet==3.0.4
 ChatterBot==1.1.0a7
-https://github.com/hugocfranco/chatterbot-corpus.git#egg=chatterbot-corpusfilelock==1.2.0
+https://github.com/hugocfranco/chatterbot-corpus.git#egg=chatterbot-corpus==1.2.0
 click==7.1.2
 colorama==0.4.3
 cryptography==2.9.2
